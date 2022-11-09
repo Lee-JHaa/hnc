@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/*common style*/
+*{margin:0; padding:0;}
+body{
+	font:15px 'Nanum Gothic', sans-serif;
+	color:#222;}
+a{
+	text-decoration:none;
+	color:#444;
+}
+ul{list-style:none;}
+
+/*layout style*/
+header{
+	width:100%;
+	min-width:1200px;
+	margin:0 auto;/*width가 100%가 아니면 반드시 마진 오토*/
+	height:120px; /*이 위치에선 height값 반드시*/
+	background:rgba(255,255,255,0.5);
+	position:fixed; /*헤더가 고정되어있는 레이아웃은 돔 2개로하는게 가장 베스트*/
+	z-index:999; /*z-index:999;=>wrapper에 포지션 설정할때*/
+	box-shadow:0 2px 10px #aaa;
+	
+}
+#wrapper{
+	width:100%;
+	/*background:#aaa;
+	padding-top:120px;*/
+	/*position:relative;
+	top:120px;=>이렇게 할려면 푸터도 wrapper안에 포합시켜야함.*/
+	position:relative;
+	top:120px;
+	min-width:1200px;
+	margin:0 auto;
+}
+	.slideWrap{
+		width:100%;
+		height:700px;
+		background:url(../images/slide0721.jpg) no-repeat center center ;
+		background-size:cover;
+		background-attachment:fixed;
+	}
+	.hncWrap{
+		width:100%;
+		background:#ffa;
+		padding:80px 0; /*100%에서 패딩값주기*/
+	}
+	.productWrap{
+		width:100%;
+		background:#f90;
+		padding:80px 0; /*100%에서 패딩값주기*/
+	}
+	
+footer{
+	width:100%;
+	height:auto; /*footer 꾸미기 전 없애거나 오토로*/
+	background:#ccc;
+	padding:50px 0;
+}
+
+/*모든 영역의 컨텐츠 공통스타일*/
+.content{
+	width:1200px;
+	height:100%;
+	/*border:1px solid red;
+	box-sizing:border-box;=처음에 만든거*/
+	margin:0 auto;
+}
+
+/*header style*/ 
+/*부모에 앱솔,자식에 relative */
+header .content{
+	position:relative;
+
+}
+
+.logo{
+	width:250px;/*svg파일은 내 부모에서 위드값설정하면 알아서 적용됨*/
+	/*border:1px solid blue;=처음*/
+	position:absolute;
+	/*top:50%;
+	transform:translateY(-50%);*/
+	/*top:50%;만쓰면,=>시작위치가 정중앙으로*/
+	/*top:50%;,transform:translateY(-50%);같이쓰면=>중간이 정중앙으로*/
+	top:50%;
+	transform:translateY(-50%);
+}
+
+nav{
+	position:absolute;
+	right:80px;
+	top:50px;
+
+}
+
+/*주메뉴 style*/
+
+/*nav는 주메뉴 서브메뉴 나눠서 꾸며야함,반드시 자식 선택자로*/
+nav>ul{overflow:auto;}
+/*float사용시 부모영역에 overflow*/
+nav>ul>li{
+	float:left;
+}
+nav>ul>li>a{
+	display:block;
+	padding:5px 20px;
+}
+
+/*서브메뉴 style*/
+nav>ul>li>ul{
+	display:none;
+	padding-top:40px;/*nav와 아래 띄우기*/
+	}
+	
+nav>ul>li>ul li{
+	
+}
+nav>ul>li>ul li a{
+	display:block;
+	background:white;
+	padding:3px 20px;
+	width:200%;
+	height:40px;
+	border-bottom:1px solid #ddd;
+	line-height:40px;
+	position:relative;
+	
+}
+
+nav>ul>li>ul li a span{
+	position:absolute;
+	/*-transform:0.5s;-*/
+	left:10px;
+	transition:0.5s;
+}
+/*nav>ul>li>ul li a span:hover{
+	left:30px;
+--*/
+
+nav>ul>li>a:hover+ul,
+nav>ul>li>ul:hover{display:block;}
+
+nav a:hover,nav a:focus{color:green;}
+
+nav>ul>li>ul li:hover a span{
+	left:30px;
+}
+.search_login{
+	position:absolute;
+	right:0;
+	top:50px; /*nav와 같은 top값*/
+	
+}
+
+.search_login .material-symbols-outlined:hover{color:green;}
+
+/*slideWrap 영역*/
+.slideWrap .content{
+	position:relative; /*내 자녀를 그 위치에서 이동시키기위해*/
+	
+}
+.slideWrap .slideTxt{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	line-height:1.5;
+	color:white;
+	font-size:1.5em;
+	letter-spacing:-1px;
+}
+/*.slideWrap*/ .slideTxt strong{
+	color:#df0;
+}
+.slideWrap .slideTxt em{
+	font-size:1.5em;
+	font-style:normal;
+}
+.slideWrap .slideTxt a{
+	border:1px solid white;
+	color:white;
+	padding:10px 20px;
+	margin-top:20px;
+	display:inline-block; /*margin값 적용시키기위해*/
+	font-size:0.7em;
+	transition:0.5s;
+	
+	
+}
+.slideWrap .slideTxt a:hover{
+	background:white;
+	color:#123456;
+	border:1px solid transparent;
+	
+}
+
+/*hncWrap 와 productWrap 공통*/
+.commonWrap{text-align:center;}
+.commonWrap ul{
+	margin-top:50px;
+	overflow:auto;}
+.commonWrap ul li{
+	width:23.5%;
+	box-sizing:border-box;
+	margin-left:2%;
+	float:left;
+}
+.commonWrap ul li:nth-child(1){margin-left:0;}
+
+/*hncWrap 영역 style*/
+.hncWrap ul li{
+	padding:30px 50px;
+	border:1px solid #ddd;
+	height:310px;
+	transition:0.5s;
+}
+
+.hncWrap ul span{
+	display:block;
+	line-height:2;
+}
+
+.hncWrap ul .icon{
+	width:100px;
+	height:100px;
+	background:#060;
+	border-radius:50%;
+	margin:0 auto 20px;
+	line-height:100px;
+	font-size:2em;
+	color:white;
+	transition:0.5s;
+	
+}
+.hncWrap ul .tit{
+	font-size:1.4em;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.hncWrap ul .txt{
+	font-size:0.9em;
+}
+.hncWrap ul li:hover{
+	background:#060;
+	color:white;
+}
+.hncWrap ul li:hover .icon{
+	color:#060;
+	background:white;
+	
+}
+.hncWrap ul li:hover a{
+	color:white;
+}
+	
+	
+/*productWrap*/
+.productWrap ul{}
+.productWrap ul li{
+	position:relative;
+	height:275px;
+	overflow:hidden;
+	cursor:pointer;
+	/*absilute사용할려면 부모영역에 포지션 반드시 설정
+	자식 둘다 포지션하면 부모는 인식하지못하기 때문에 width,heigh 값을 써야함*/
+}
+.productWrap ul li>div{
+	width:100%;
+	height:100%;
+	position:absolute;
+	/*absilute사용할려면 부모영역에 포지션 반드시 설정
+	자식 둘다 포지션하면 부모는 인식하지못하기 때문에 width,heigh 값을 써야함*/
+}
+
+.productWrap ul li .proTxt{
+	background:#060;
+	color:white;
+	text-align:left;
+	padding:20px; /*box-sizing=>공통에 width값썼기때문에*/
+	box-sizing:border-box;
+	font-size:1.4em;
+}
+
+.productWrap ul li .proTxt h3{
+	margin-bottom:25px;
+}
+	
+.productWrap ul li .proImg{
+	bottom:0px;
+	transition:0.5s;
+	/*00.left:0px;*/
+}
+.productWrap ul li:hover .proImg{
+	/*bottom:-275px;*/
+	height:0;
+	/*00.left:100%;*/
+}
+
+.productWrap img{
+	width:100%;
+}
+/*li=>relative
+자식에 absilute*/
+
+
+/*more*/
+/*.productWrap .more{
+	width:150px;
+	margin:0 auto;
+	margin-top:30px;
+	background:#060;
+	padding:8px;
+	height:100%;
+	position:relative;
+
+}
+.productWrap .more:hover{
+
+}
+
+.productWrap .more a{
+	color:white;
+	transition:0.5s;
+	display:block;
+	position:
+}
+.productWrap .more a:hover{
+
+	display:block;
+	top:100px;
+}*/
+
+.productWrap .more{
+	background:#060;
+	margin:50px auto 0;
+	width:180px;
+	height:50px;
+	overflow:hidden; /*부모영역 벗어난 부분 감추기*/
+	line-height:50px;
+	position:relative;
+}
+
+.productWrap .more a{
+	color:white;
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%); /*세로로 정중앙에(width값 100%했을땐 할 필요없음)*/
+	top:0;
+	width:100%;
+	height:100%; /*혹시 모르니 높이도 설정*/
+	transition:0.5s;
+}
+
+.productWrap .more:hover a{
+	top:-50px; /*높이값 50으로 설정했기떄문*/
+	
+}
+
+/*footer
+footer .content{
+	position:relative;
+	padding:20px;
+	height:250px;
+	box-sizing:border-box;
+}
+footer .content img{
+	width:200px;
+}
+footer .content p{
+	font-size:0.9em;
+	line-height:2.3;
+	position:absolute;
+	right:250px;
+	top:25px;
+}
+
+footer .content p strong{
+	font-weight:bold;
+	font-size:1.4em;
+}*/
+
+/*footer style*/
+footer .content{overflow:auto;}
+.footerLeft{
+	width:250px;
+	float:left;
+}
+.footerRight{
+	width:850px;
+	float:right;
+	line-height:2.5;
+}
+
+.footerRight address{
+	line-height:1.3;
+	font-style:normal;
+}
+.footerRight a:hover{
+	font-weight:bold;
+	color:#222;}
